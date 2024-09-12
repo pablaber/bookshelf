@@ -34,15 +34,15 @@
 				{/each}
 			</ul>
 		</div>
-		<div>
+		<div class="relative inline-block">
 			<button onclick={toggleProfileMenu}>
-				<span class="text-gray-500 hover:text-gray-900 cursor-pointer">{userDisplayName}</span>
+				<span class="text-gray-900 cursor-pointer">{userDisplayName}</span>
 			</button>
 			{#if profileMenuExpanded}
 				<div
 					in:slide
 					out:slide
-					class="absolute mt-4 w-48 bg-white border border-gray-100 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700"
+					class="absolute right-0 mt-2 w-48 bg-white border border-gray-100 rounded-lg shadow-lg"
 				>
 					<ul>
 						<li>
