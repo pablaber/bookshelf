@@ -1,12 +1,16 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card';
+	import * as Alert from "$lib/components/ui/alert";
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 	import { Button } from '$lib/components/ui/button';
+	import { page } from '$app/stores';
 
 	let email = '';
 	let password = '';
 	let isLoading = false;
+
+	let error = $derived($page.form?.error);
 </script>
 
 <div class="container h-screen flex flex-col items-center justify-center">
@@ -40,5 +44,10 @@
 				</form>
 			</Card.Content>
 		</Card.Root>
+		{#if error?.message !== undefined}
+			<Alert.Root class="my-2" variant="destructive">
+				<Alert.Description>{error.message}</Alert.Description>
+			</Alert.Root>
+		{/if}
 	</div>
 </div>
