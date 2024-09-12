@@ -1,4 +1,5 @@
-import type PocketBase, { type AuthModel } from 'pocketbase';
+import type PocketBase, { type Users } from 'pocketbase';
+import type { UsersResponse } from './pocketbase-types';
 
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
@@ -7,7 +8,7 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			pb: PocketBase;
-			user?: AuthModel;
+			user?: UsersResponse;
 		}
 		// interface PageData {}
 		// interface PageState {}

@@ -15,11 +15,7 @@ export const actions: Actions = {
 		}
 
 		try {
-			const { token, record } = await locals.pb
-				.collection('users')
-				.authWithPassword(email, password);
-			console.log(token);
-			console.log(record);
+			await locals.pb.collection('users').authWithPassword(email, password);
 		} catch (err) {
 			locals.pb.authStore.clear();
 			if (err instanceof ClientResponseError) {

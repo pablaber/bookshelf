@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { page } from '$app/stores';
-
-  let user = $derived($page.data.user);
+  import type { PageData } from './$types';
+  const { data } = $props() as { data: PageData };
 </script>
 
-<h1>Hello {user.email}</h1>
+<h1>Hello {data.user.email}</h1>
