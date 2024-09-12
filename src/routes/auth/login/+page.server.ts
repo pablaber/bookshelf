@@ -31,6 +31,6 @@ export const actions: Actions = {
 			}
 		}
 
-		return redirect(302, '/app');
+		return redirect(302, '/app/home');
 	}
 };
