@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { auth } from '$lib/stores/user.svelte';
-	import { fade, slide } from 'svelte/transition';
+	import { slide } from 'svelte/transition';
+	import { beforeNavigate } from '$app/navigation';
 
 	const navbarLinks = [
 		{ name: 'Home', path: '/app/home' },
@@ -19,6 +20,10 @@
 	const toggleProfileMenu = () => {
 		profileMenuExpanded = !profileMenuExpanded;
 	};
+
+	beforeNavigate(() => {
+		profileMenuExpanded = false;
+	});
 </script>
 
 <nav class="bg-white border-gray-200 dark:bg-gray-900 border-b-2">
@@ -35,7 +40,7 @@
 			</ul>
 		</div>
 		<div class="relative inline-block">
-			<button onclick={toggleProfileMenu}>
+			<button onclick={() => toggleProfileMenu()}>
 				<span class="text-gray-900 cursor-pointer">{userDisplayName}</span>
 			</button>
 			{#if profileMenuExpanded}
@@ -46,7 +51,7 @@
 				>
 					<ul>
 						<li>
-							<a href="/app/profile" class="block py-2 px-3">Profile</a>
+							<a href="/app/profile/edit" class="block py-2 px-3">Profile</a>
 						</li>
 						<li>
 							<form action="/auth/logout" method="POST">
